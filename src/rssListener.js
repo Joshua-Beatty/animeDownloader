@@ -26,8 +26,9 @@ async function main() {
 							return;
 						if(!show.downloaded)
 							show.downloaded = []
-						show.downloaded .push(item.guid);
+						show.downloaded.push(item.guid);
 						configUpdated = true;
+						console.log(`${item.title} successfully sent to transmission`)
 					})
 
 				}
