@@ -39,11 +39,11 @@ async function main() {
 function downloadTorrent(link, callback) {
 	const tr = spawn(`transmission-remote`, ['-a', link, '-n', process.env.TRANSMISSION_N_ARG])
 	tr.stdout.on('data', (data) => {
-		console.log(`stdout: ${data.replace(process.env.TRANSMISSION_N_ARG, '*'.repeat(process.env.TRANSMISSION_N_ARG.length))}`);
+		console.log(`stdout: ${`${data}`.replace(process.env.TRANSMISSION_N_ARG, '*'.repeat(process.env.TRANSMISSION_N_ARG.length))}`);
 	});
 
 	tr.stderr.on('data', (data) => {
-		console.log(`stderr: ${data.replace(process.env.TRANSMISSION_N_ARG, '*'.repeat(process.env.TRANSMISSION_N_ARG.length))}`);
+		console.log(`stderr: ${`${data}`.replace(process.env.TRANSMISSION_N_ARG, '*'.repeat(process.env.TRANSMISSION_N_ARG.length))}`);
 	});
 
 	tr.on('close', (code) => {
