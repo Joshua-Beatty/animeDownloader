@@ -1,14 +1,16 @@
 {
     "shows": [
         {
-            "titlePiece": "Spy x Family"
+            "titlePiece": "Spy x Family",
+            "downloaded": []
         },
         {
             "titlePiece": "Kaguya-sama",
-            "last": "[SubsPlease] Kaguya-sama wa Kokurasetai S3 - 04 (1080p) [D84F1A5E].mkv"
+            "downloaded": []
         },
         {
-            "titlePiece": "Otome Game Sekai"
+            "titlePiece": "Otome Game Sekai",
+            "downloaded": []
         }
     ]
 }

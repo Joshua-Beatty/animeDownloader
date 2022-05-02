@@ -20,11 +20,13 @@ async function main() {
 	for (const item of data.rss.channel.item) {
 		for (const show of config.shows) {
 			if (item.title.includes(show.titlePiece)) {
-				if (show.last != (item.title)) {
+				if (!show.downloaded.includes(item.guid)) {
 					downloadTorrent(item.link, (success) => {
 						if (!success)
 							return;
-						show.last = item.title;
+						if(!show.downloaded)
+							show.downloaded = []
+						show.downloaded .push(item.guid);
 						configUpdated = true;
 					})
 
