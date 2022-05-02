@@ -21,7 +21,7 @@ async function main() {
 		for (const show of config.shows) {
 			if (item.title.includes(show.titlePiece)) {
 				if (!show.downloaded.includes(item.guid)) {
-					downloadTorrent(item.link, (success) => {
+					downloadTorrent(item.title, item.link, (success) => {
 						if (!success)
 							return;
 						if(!show.downloaded)
@@ -38,14 +38,14 @@ async function main() {
 		fs.writeFileSync('src/config.json', JSON.stringify(config, null, 4));
 	}
 }
-function downloadTorrent(link, callback) {
+function downloadTorrent(title, link, callback) {
 	const tr = spawn(`transmission-remote`, ['-a', link, '-n', process.env.TRANSMISSION_N_ARG])
 	tr.stdout.on('data', (data) => {
-		console.log(`stdout: ${`${data}`.replace(process.env.TRANSMISSION_N_ARG, '*'.repeat(process.env.TRANSMISSION_N_ARG.length))}`);
+		console.log(`${title}-stdout: ${`${data}`.replace(process.env.TRANSMISSION_N_ARG, '*'.repeat(process.env.TRANSMISSION_N_ARG.length))}`);
 	});
 
 	tr.stderr.on('data', (data) => {
-		console.log(`stderr: ${`${data}`.replace(process.env.TRANSMISSION_N_ARG, '*'.repeat(process.env.TRANSMISSION_N_ARG.length))}`);
+		console.log(`${title}-stderr: ${`${data}`.replace(process.env.TRANSMISSION_N_ARG, '*'.repeat(process.env.TRANSMISSION_N_ARG.length))}`);
 	});
 
 	tr.on('close', (code) => {
