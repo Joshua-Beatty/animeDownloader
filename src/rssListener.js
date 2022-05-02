@@ -35,6 +35,7 @@ async function main() {
 			}
 		}
 	}
+	console.log( JSON.stringify(config, null, 4))
 	if (configUpdated) {
 		fs.writeFileSync('src/config.json', JSON.stringify(config, null, 4));
 	}
