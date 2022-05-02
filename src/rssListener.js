@@ -18,14 +18,14 @@ async function main() {
 	const data = parser.parse(response.data);
 	let configUpdated = false;
 	let sending = 0;
-	let received = 1;
+	let received = 0;
 	for (const item of data.rss.channel.item) {
 		for (const show of config.shows) {
 			if (item.title.includes(show.titlePiece)) {
 				if (!show.downloaded.includes(item.guid)) {
 					sending++;
 					downloadTorrent(item.title, item.link, (success) => {
-						received = 1;
+						received++;
 						if (!success)
 							return;
 						if(!show.downloaded)
