@@ -14,7 +14,7 @@ export { job, main };
 
 async function main() {
 	const config = JSON.parse(fs.readFileSync('src/config.json', 'utf8'));
-	const response = await axios.get("https://subsplease.org/rss/?t&r=1080)
+	const response = await axios.get("https://subsplease.org/rss/?t&r=1080")
 	const data = parser.parse(response.data);
 	let configUpdated = false;
 	let sending = 0;
